@@ -1,0 +1,286 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:padding="16dp"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Electricity KWH Current Hour Average Price"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="16dp"
+        android:shadowColor="#A3000000"
+        android:shadowDx="4"
+        android:shadowDy="4"
+        android:shadowRadius="40"/>
+
+
+    <!-- Content TextView -->
+    <TextView
+        android:id="@+id/TextFieldId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textColor="@android:color/black"
+        android:gravity="center"
+        android:padding="16dp"
+        android:textSize="20sp" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/Today"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:layout_weight="1"
+            android:text="Today's prices"
+            android:onClick="startToday" />
+        <Space
+            android:layout_width="16dp"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/Minute"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:layout_weight="1"
+            android:text="5 Minutes prices"
+            android:onClick="startFiveMinuteActivity" />
+    </LinearLayout>
+
+    <!-- Second Row -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/Week"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:layout_weight="1"
+            android:text="Week"
+            android:onClick="startWeek" />
+        <Space
+            android:layout_width="16dp"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/Month"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:layout_weight="1"
+            android:text="Month"
+            android:onClick="startMonth" />
+    </LinearLayout>
+
+    <!-- Third Row -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- Layout 1 -->
+        <Button
+            android:id="@+id/backWeekButton"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:onClick="backWeekActivity"
+            android:text="&#9664;"
+            android:visibility="invisible"
+            android:textColor="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/backTodayButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/textField"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            app:layout_constraintStart_toEndOf="@+id/backWeekButton"
+            app:layout_constraintEnd_toStartOf="@+id/nextWeekButton"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textColor="@android:color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintWidth_default="wrap"
+            android:gravity="center"/>
+
+        <Button
+            android:id="@+id/nextWeekButton"
+            android:layout_width="56dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:visibility="invisible"
+            android:text="&#9654;"
+            android:onClick="nextWeekActivity"
+            android:textColor="@android:color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <!-- Layout 2 -->
+        <Button
+            android:id="@+id/backTodayButton"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:visibility="invisible"
+            android:text="&#9664;"
+            android:onClick="backTodayActivity"
+            android:textColor="@android:color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/backWeekButton"
+            app:layout_constraintBottom_toTopOf="@+id/textTodayField"/>
+
+        <EditText
+            android:id="@+id/textTodayField"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            android:textColor="@android:color/black"
+            app:layout_constraintStart_toEndOf="@+id/backTodayButton"
+            app:layout_constraintEnd_toStartOf="@+id/nextTodayButton"
+            app:layout_constraintTop_toBottomOf="@+id/backWeekButton"
+            app:layout_constraintBottom_toTopOf="@+id/nextTodayButton"
+            app:layout_constraintWidth_default="wrap"
+            android:gravity="center"/>
+
+        <Button
+            android:id="@+id/nextTodayButton"
+            android:layout_width="56dp"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:layout_marginRight="30dp"
+            android:visibility="invisible"
+            android:text="&#9654;"
+            android:onClick="nextTodayActivity"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/backWeekButton"
+            app:layout_constraintBottom_toTopOf="@+id/textTodayField"/>
+
+        <!-- Layout 3 -->
+        <Button
+            android:id="@+id/backMonthButton"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:textColor="@android:color/white"
+            android:visibility="invisible"
+            android:text="&#9664;"
+            android:onClick="backMonthActivity"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/backTodayButton"
+            app:layout_constraintBottom_toTopOf="@+id/textMonthField"/>
+
+        <EditText
+            android:id="@+id/textMonthField"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            android:textColor="@android:color/black"
+            app:layout_constraintStart_toEndOf="@+id/backMonthButton"
+            app:layout_constraintEnd_toStartOf="@+id/nextMonthButton"
+            app:layout_constraintTop_toBottomOf="@+id/backTodayButton"
+            app:layout_constraintBottom_toTopOf="@+id/nextMonthButton"
+            app:layout_constraintWidth_default="wrap"
+            android:gravity="center"/>
+
+        <Button
+            android:id="@+id/nextMonthButton"
+            android:layout_width="56dp"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:layout_marginRight="30dp"
+            android:visibility="invisible"
+            android:text="&#9654;"
+            android:onClick="nextMonthActivity"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/backTodayButton"
+            app:layout_constraintBottom_toTopOf="@+id/textMonthField"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <com.github.mikephil.charting.charts.BarChart
+        android:id="@+id/barChart"
+        android:layout_width="300dp"
+        android:layout_height="250dp"
+        android:layout_marginLeft="45dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingClass" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="40dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/barChart">
+
+        <!-- Red Box -->
+        <View
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginRight="12dp"
+            android:background="@color/green" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="&lt;5 ç"
+            android:textColor="@android:color/black" />
+
+        <View
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="12dp"
+            android:background="@color/holo_yellow" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="5-14 ç"
+            android:textColor="@android:color/black" />
+
+        <View
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="16dp"
+            android:background="@color/red" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="&gt;14 ç"
+            android:layout_marginLeft="10dp"
+            android:textColor="@android:color/black" />
+    </LinearLayout>
+
+</LinearLayout>
